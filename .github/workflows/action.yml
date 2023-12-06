@@ -26,7 +26,9 @@ jobs:
       continue-on-error: true
       with:
         name: nx
-        path: ./.nx 
+
+    - name: Display structure of downloaded files
+      run: ls -R
 
     - name: Run 
       run: | 
