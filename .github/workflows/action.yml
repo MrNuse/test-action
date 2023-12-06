@@ -26,6 +26,7 @@ jobs:
       with:
         name: nx
         path: ./.nx 
+        continue-on-error: true
 
     - name: Run 
       run: | 
