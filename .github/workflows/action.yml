@@ -22,4 +22,12 @@ jobs:
       run: npm install
 
     - name: Run 
-      run: npm start
+      run: | 
+        npm start
+        mv .nx ./.nx-artifact
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: nx-artifact
+        path: ./.nx-artifact
