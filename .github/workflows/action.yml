@@ -27,11 +27,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-nx-
 
-    - name: Display structure of cached files
-      run: ls -R
-
     - name: Install dependencies
       run: npm install
+
+    - name: Display structure of cached files
+      run: ls -R
 
     - name: Run 
       run: | 
