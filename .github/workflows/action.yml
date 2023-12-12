@@ -43,5 +43,3 @@ jobs:
           path: |
             .nx
           key: ${{ runner.os }}-nx-${{ hashFiles('**/nx/**') }}
-          restore-keys: |
-            ${{ runner.os }}-nx-
