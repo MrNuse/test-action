@@ -42,4 +42,4 @@ jobs:
       with:
           path: |
             .nx
-          key: ${{ runner.os }}-nx-${{ hashFiles('**/nx/**') }}
+          key: ${{ runner.os }}-nx-
