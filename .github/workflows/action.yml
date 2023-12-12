@@ -22,7 +22,7 @@ jobs:
       run: npm install
 
     - name: Download Artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@master
       continue-on-error: true
       with:
         name: nx
@@ -35,7 +35,7 @@ jobs:
         npm start
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@master
       with:
         name: nx
         path: ./.nx
