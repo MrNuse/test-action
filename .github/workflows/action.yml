@@ -18,8 +18,8 @@ jobs:
       with:
         node-version: '16'
 
-    - name: Cache nx directory
-      uses: actions/cache@master
+    - name: Restore Cached nx directory
+      uses: actions/cache/restore@v3
       with:
         path: |
           .nx
@@ -36,3 +36,12 @@ jobs:
     - name: Run 
       run: | 
         npm start
+    
+    - name: Caching nx directory
+      uses: actions/cache/save@v3
+      with:
+          path: |
+            .nx
+          key: ${{ runner.os }}-nx-${{ hashFiles('**/nx/**') }}
+          restore-keys: |
+            ${{ runner.os }}-nx-
