@@ -40,6 +40,15 @@ jobs:
     - name: Clear Cache
       run: npx actions/invalidate-cache --path .nx
     
+    - name: Delete Previous Cache
+      if: ${{ steps.cache-restore.outputs.cache-hit }}
+      continue-on-error: true
+      run: |
+        gh extension install actions/gh-actions-cache
+        gh actions-cache delete "${{ runner.os }}-nx-" --confirm
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
+
     - name: Caching nx directory
       uses: actions/cache/save@v3
       with:
