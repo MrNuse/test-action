@@ -36,6 +36,9 @@ jobs:
     - name: Run 
       run: | 
         npm start
+
+    - name: Clear Cache
+      run: npx actions/invalidate-cache --path .nx
     
     - name: Caching nx directory
       uses: actions/cache/save@v3
