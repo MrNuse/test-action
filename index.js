@@ -7,22 +7,28 @@ const fileName = 'test.txt';
 
 const folderPath = path.join(__dirname, folderName);
 
-fs.mkdir(folderPath, (err) => {
-  if (err) {
-    console.error('Errore nella creazione della cartella:', err);
-  } else {
-    console.log('Cartella creata con successo:', folderPath);
+if(fs.existsSync(folderPath)) {
+  console.log("folder already Exists skipping creation");
+} else {
 
-
-    const filePath = path.join(folderPath, fileName);
-
-
-    fs.writeFile(filePath, 'Questo è un file di test!', (err) => {
-      if (err) {
-        console.error('Errore nella creazione del file:', err);
-      } else {
-        console.log('File creato con successo:', filePath);
-      }
-    });
-  }
-});
+  
+  fs.mkdir(folderPath, (err) => {
+    if (err) {
+      console.error('Errore nella creazione della cartella:', err);
+    } else {
+      console.log('Cartella creata con successo:', folderPath);
+      
+      
+      const filePath = path.join(folderPath, fileName);
+      
+      
+      fs.writeFile(filePath, 'Questo è un file di test!', (err) => {
+        if (err) {
+          console.error('Errore nella creazione del file:', err);
+        } else {
+          console.log('File creato con successo:', filePath);
+        }
+      });
+    }
+  });
+}
