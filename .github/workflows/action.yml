@@ -18,24 +18,21 @@ jobs:
       with:
         node-version: '16'
 
+    - name: Cache nx directory
+      uses: actions/cache@master
+      with:
+        path: |
+          .nx
+        key: ${{ runner.os }}-nx-${{ hashFiles('**/nx/**') }}
+        restore-keys: |
+          ${{ runner.os }}-nx-
+
+    - name: Display structure of cached files
+      run: ls -R
+
     - name: Install dependencies
       run: npm install
-
-    - name: Download Artifact
-      uses: actions/download-artifact@master
-      continue-on-error: true
-      with:
-        name: nx
-
-    - name: Display structure of downloaded files
-      run: ls -R
 
     - name: Run 
       run: | 
         npm start
-
-    - name: Upload Artifact
-      uses: actions/upload-artifact@master
-      with:
-        name: nx
-        path: ./.nx
